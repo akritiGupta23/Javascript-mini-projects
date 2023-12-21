@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change</title>
+    <style>
+        #outer{
+            height:200px;
+            width:200px;
+            border-radius: 100%;
+            background-color:purple;
+            margin:auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #inner{
+            height:100px;
+            width:100px;
+
+            
+            background-color:lightblue;
+        }
+        button{
+            height:20px;
+            width:100px;
+            display: block;
+            margin:20px auto;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+
+        </div>
+    </div>
+    <button id="colorchange">
+      change color
+    </button>
+    <button id="shapechange">
+      change shape
+    </button>
+
+
+    <script>
+        var outerdiv=document.getElementById('outer');
+        var changecolor=document.getElementById('colorchange');
+        var currcol="purple";
+        function changecol(){
+            var a=Math.floor(Math.random() * 3);
+            var colors=['red','green','purple']
+            outerdiv.style.backgroundColor=colors[a];
+            currcol=colors[a];
+        }
+        changecolor.addEventListener('click',changecol);
+        var innerdiv=document.getElementById('inner');
+        var changeshape=document.getElementById('shapechange');
+        function changesha(){
+            var a=Math.floor(Math.random() * 3);
+            if(a===0){
+                innerdiv.style.height="100px";
+                innerdiv.style.width="100px";
+                innerdiv.style.borderRadius="100%";
+                innerdiv.style.borderWidth="0";
+                innerdiv.style.backgroundColor="lightblue";
+            }else if(a===1){
+                innerdiv.style.height="100px";
+                innerdiv.style.width="100px";
+                innerdiv.style.backgroundColor="lightblue";
+                innerdiv.style.borderRadius="0%";
+                innerdiv.style.borderWidth="0";
+            }else{
+
+                innerdiv.style.height="0px";
+                innerdiv.style.width="0px";
+                innerdiv.style.backgroundColor="transparent";
+                innerdiv.style.borderLeft="50px solid transparent";
+                innerdiv.style.borderRight="50px solid  transparent";
+                innerdiv.style.borderRadius="0%";
+                innerdiv.style.borderBottom="100px solid lightblue";
+               
+
+            }
+            
+        }
+        changeshape.addEventListener('click',changesha);
+    </script>
+</body>
+</html>

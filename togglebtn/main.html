@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle</title>
+    <style>
+        #outer{
+       width:150px;
+       height:50px;
+       background-color: white;
+       padding:2px;
+        border:2px solid black; 
+        border-radius: 30px;
+        margin:auto;
+        }
+        #inner{
+       width:50px;
+       height:50px;
+       border-radius: 100%;
+       background-color: black;
+    
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+
+        </div>
+    </div>
+    <h2>Click on the toggle button</h2>
+
+    <script>
+        var dir="left";
+        var innerdiv=document.getElementById('inner');
+        var outerdiv=document.getElementById('outer');
+        var heading=document.querySelector('h2');
+        innerdiv.addEventListener('click',changedirection);
+        innerdiv.addEventListener('click',changeColors);
+        function changedirection(){
+            if(dir==="left"){
+                innerdiv.style.translate="100px 0px";
+                innerdiv.style.transitionTimingFunction="ease";
+                innerdiv.style.transitionDuration="0.5s";
+                dir="right";
+            }else{
+                innerdiv.style.translate="0px 0px";
+                innerdiv.style.transitionTimingFunction="ease";
+                innerdiv.style.transitionDuration="0.5s";
+                dir="left";
+            }
+            
+        }
+        function changeColors(){
+            if(dir==="left"){
+                document.body.style.backgroundColor="white";
+                innerdiv.style.backgroundColor="white";
+                outerdiv.style.backgroundColor="black";
+                heading.style.color="black";
+            }else{
+                document.body.style.backgroundColor="black";
+                innerdiv.style.backgroundColor="black";
+                outerdiv.style.backgroundColor="white";
+                heading.style.color="white";
+               
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        header {
+            position: fixed;
+            top: 1vw;
+            right: 1vw;
+            font-size: 1rem;
+            z-index: 6;
+        }
+        #progress-bar {
+            height: 30px;
+            width: 20vw;
+            background-color: transparent;
+            text-align: center;
+            color: #1b994d;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px grey, 0px 0px 5px green;
+        }
+        #progress-bar span {
+            line-height: 30px;
+        }
+        #scrolled {
+            font-size: 1.3rem;
+        }
+        #start {
+            padding: 11px;
+            width: 70%;
+            text-align: justify;
+            color: grey;
+            line-height: 28px;
+            font-size: 1.1rem;
+            margin: auto;
+        }
+        
+        /* Portfolio Section */
+        #gallery h1 {
+            color: #2857a4;
+            margin-bottom: 74px;
+            text-transform: uppercase;
+            word-spacing: 1vw;
+            text-align: center;
+            font-size: 30px;
+        }
+        #gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 50px 100px;
+            justify-content: space-around;
+        }
+        .gallery-image-container {
+            max-width: 400px;
+            overflow: hidden;
+            margin: 30px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .gallery-image-container img {
+            width: 100%;
+            height: 100%;
+        }
+        .gallery-image-container:hover {
+            box-shadow: 0 0 20px #74ADC8;
+        }
+        
+    </style>
+
+</head>
+<body>
+   <header>
+       <div id="progress-bar">
+           <span><span id="scrolled">0</span>% Viewed</span>
+       </div>
+   </header>
+   <main>
+    <div id="start">
+        <p>
+           One of the basic thing about <span class="text-highlight">typesetting industry</span>. is the industry's standard <span class="text-highlight">dummy text ever</span> since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s <span class="text-highlight">with the release of Letraset</span> sheets containing Lorem Ipsum.
+        </p>
+    </div>
+
+    <section id="gallery">
+        <h1>Image Gallery</h1>
+
+        <div id="gallery-container">
+
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png">
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png" />
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png" />
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000025_1550237330_codezen_2.png" />
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png" />
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png" />
+            </div>
+            <div class="gallery-image-container">
+                <img src="https://ninjasfiles.s3.amazonaws.com/asset_0000000000000024_1550237299_codezen.png" />
+            </div>
+        </div>
+    </section>
+    </main>
+    <script>
+       document.addEventListener('scroll',getPer);
+        function getPer(){
+            var num=document.getElementById('scrolled');
+            var el=document.getElementById("gallery");
+            var ans=el.getBoundingClientRect().top-window.innerHeight;
+            ans=-ans;
+          
+            var val=el.getBoundingClientRect().height;
+        
+            var getans=ans/val;
+         
+            getans*=100;
+            console.log(getans);
+
+            getans=getans.toFixed(2);
+            if(getans<0 ){
+                getans=0;
+            }
+            if(getans>100){
+                getans=100;
+            }
+            num.innerHTML=getans;
+        }
+    </script>
+</body>
+</html>

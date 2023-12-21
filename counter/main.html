@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one{
+        height:300px;
+        width:80%;
+        background: linear-gradient(rgb(144, 218, 245),pink);
+        margin:0 auto 50px;
+     
+        box-sizing: border-box;
+        padding: 40px 190px;
+        position: relative;
+
+    }
+    .one h3{
+        text-align: center;
+        color:white;
+        font-weight: bold;
+        word-spacing: 16px;
+        letter-spacing: 8px;
+        font-size: x-large;
+        margin-bottom: 50px;
+
+    }
+    .one input{
+        height:40px;
+        width:300px;
+        font-size: x-large;
+    }
+    .one .box{
+        display: flex;
+        justify-content: space-between;
+    }
+    .one .box button{
+        background-color: white;
+        border-radius: 40px;
+        font-size: large;
+    }
+    .one .box button:hover{
+        background-color: rgb(235, 230, 230);
+        cursor: pointer;
+      
+    }
+    .two{
+        
+        height:200px;
+        width:60%;
+        margin:auto;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .two .main{
+        height:50px;
+        width:50px;
+        background-color: black;
+       position: relative;
+       overflow: hidden;
+        box-shadow: -2px -2px 6px 2px rgb(176, 175, 175);
+        
+        
+
+    }
+    .two .main p{
+      margin: 0;
+      background-color: white;
+       height:100%;
+       width:100%;
+       text-align: center;
+       border-top: 2px solid black;
+       font-size: xx-large;
+       
+    }
+    p.next{
+        position: absolute;
+        top:50px;
+    }
+    p.animate{
+       
+        transition: all 0.5s;
+        top: 0px;
+    }
+ 
+    
+   
+    
+</style>
+<body>
+    <div class="one">
+      <h3>Enter value between 0 and 9</h3>
+      <div class="box">
+        <input type="number" id="input" placeholder="Enter Number">
+      <button type="button" id="btn">Start Counter</button>
+      </div>
+      
+    </div>
+    <div class="two">
+        <div class="main">
+            <p class="current">0</p>
+            <p class="next">1</p>
+        </div>
+      
+    </div>
+    
+
+
+
+    <script>
+        var arr=document.querySelectorAll(".two .main p");
+        var btn=document.getElementById("btn");
+        btn.addEventListener('click',startCount);
+        function startCount(){
+            var count=document.getElementById('input').value;
+    
+            if(count==""){
+                alert("wrong input!");
+            }else{
+            
+                countInt=setInterval(animate,1000,count);
+                arr[0].innerHTML="0";
+                arr[1].innerHTML="1";
+            
+
+            }
+        };
+        function animate(count){
+            
+              arr[1].innerHTML=parseInt(arr[0].innerHTML)+1;
+            
+               arr[1].classList.add("animate");
+               setTimeout(function(){
+                arr[1].classList.remove("animate");
+                arr[0].innerHTML=arr[1].innerHTML;
+               },500);
+               if(arr[1].innerHTML>=count){
+
+                clearInterval(countInt);
+              
+             }
+             
+        }
+
+            
+            
+        
+    </script>
+</body>
+</html>
